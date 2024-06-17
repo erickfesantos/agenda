@@ -37,7 +37,7 @@ export default function TelaInicial() {
 
   const cliente = Globais.banco;
 
-  // -------------------- Função para tela 03, banco de dados. --------------------------------------------------	
+  // -------------------- Função para tela 03, banco de dados e mais. --------------------------------------------------	
   const bancoBruto = Globais.banco2;
   const banco = Globais.banco3;
 
@@ -52,6 +52,10 @@ export default function TelaInicial() {
       Globais.banco3[i].id = i; 
     }
   }
+
+  
+
+
   // --------------------------------------------^^^^^^^^-------------------------------------------------------
   
 
@@ -212,9 +216,10 @@ export default function TelaInicial() {
                               onValueChange={(itemValue) =>
                                 setServicos(itemValue)
                               }>
-                              <Picker.Item label="Corte" value="Corte" />
-                              <Picker.Item label="Corte - Barba" value={"Corte\nBarba"} />
-                              <Picker.Item label="Corte - Barba - Sobrancelha" value={"Corte\nBarba\nSobrancelha"} />
+                              <Picker.Item key='00' label="Corte" value="Corte" />
+                              <Picker.Item key='01' label="Corte - Barba" value={"Corte\nBarba"} />
+                              <Picker.Item key='02' label="Corte - Sobrancelha" value={"Corte\nSobrancelha"} />
+                              <Picker.Item key='03' label="Corte - Barba - Sobrancelha" value={"Corte\nBarba\nSobrancelha"} />
                             </Picker>
 
                               <View style={{marginTop:30,flexDirection:'row', justifyContent: 'space-between'}}>

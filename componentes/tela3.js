@@ -11,8 +11,33 @@ export default function TelaInicial() {
   const tela40 = (0.4 * Dimensions.get('window').width);
   //const bancoBruto = Globais.banco2;
   const banco = Globais.banco3;
+  let valor = 0;
+  let corte = 0;
+  let sobrancelha = 0;
+  let barba =0;
 
-  
+  const somar = () => {
+
+    valor = 0;
+    corte = 0;
+    sobrancelha = 0;
+    barba =0;
+
+    for(let i = 0; i < Globais.banco2.length ; i++){
+      if(Globais.banco2[i].servico == 'Corte'){
+        valor += 15;corte += 1
+      }
+      if(Globais.banco2[i].servico == "Corte\nBarba"){
+        valor += 25;corte += 1;barba += 1;
+      }
+      if(Globais.banco2[i].servico == "Corte\nSobrancelha"){
+        valor += 20;corte += 1;sobrancelha += 1;
+      }
+      if(Globais.banco2[i].servico == "Corte\nBarba\nSobrancelha"){
+        valor += 30;corte += 1;sobrancelha += 1;barba += 1;
+      }
+    }
+  }
 
 
 
@@ -22,6 +47,7 @@ export default function TelaInicial() {
       
       
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        {somar()}
         
         <View style={{ backgroundColor:'#363946',flex: 1, alignItems: 'center'}}>
         
@@ -41,13 +67,13 @@ export default function TelaInicial() {
         <View style={{height:'85%', width:tela90}}>
           <View style={{height:'35%', width:tela90, marginBottom:20}} >
             <View style={{borderTopLeftRadius:15, borderTopRightRadius:15,height:'33%', width:tela90, backgroundColor:'#485261',flexDirection:'row',alignItems:'center' ,justifyContent:'space-around'}} >
-              <Text style={{color:'#FFF'}}>Serviços:</Text><Text style={{color:'#FFF'}} >40</Text>
+              <Text style={{color:'#FFF'}}>Agendamentos:</Text><Text style={{color:'#FFF'}} >{Globais.banco2.length}</Text>
             </View>
             <View style={{height:'33%', width:tela90, backgroundColor:'#424654',flexDirection:'row',alignItems:'center' ,justifyContent:'space-around'}} >
-            <Text style={{color:'#FFF'}} >Total bruto:</Text><Text style={{color:'#FFF'}} >800$</Text>
+            <Text style={{color:'#FFF'}} >Total bruto:</Text><Text style={{color:'#FFF'}} >{valor} $</Text>
             </View>
             <View style={{borderBottomLeftRadius:15,borderBottomRightRadius:15,height:'33%', width:tela90, backgroundColor:'#485261',flexDirection:'row',alignItems:'center' ,justifyContent:'space-around'}} >
-            <Text style={{color:'#FFF'}} >Cortes: 38</Text><Text style={{color:'#FFF'}} >Sobrancelhas: 7</Text><Text style={{color:'#FFF'}} >Barbas: 5</Text>
+            <Text style={{color:'#FFF'}} >Cortes: {corte}</Text><Text style={{color:'#FFF'}} >Sobrancelhas: {sobrancelha}</Text><Text style={{color:'#FFF'}} >Barbas: {barba}</Text>
             </View>
           </View>
           <View style={{ height:'60%',width:tela90}}>
