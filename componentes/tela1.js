@@ -46,7 +46,7 @@ export default function TelaInicial() {
     Globais.banco3 = [];
 
     for( let i = 0; i< bancoBruto.length ; i++){
-      bancoBruto[i].data.slice(3,5)=='05'? Globais.banco3.push({id:banco.length,nome:bancoBruto[i].nome, data:bancoBruto[i].data}) : (null);
+      bancoBruto[i].data.slice(3,5)=='06'? Globais.banco3.push({id:banco.length,nome:bancoBruto[i].nome, data:bancoBruto[i].data}) : (null);
     }
 
     for( let i = 0; i< Globais.banco3.length ; i++){
@@ -60,15 +60,7 @@ export default function TelaInicial() {
   // --------------------------------------------^^^^^^^^-------------------------------------------------------
   
 
-    const attMes = () => {
-      Globais.banco2 = [];
-      for(let i = 0; i < Globais.banco1.length ; i++){
-          if(Globais.banco1[i].data.slice(3,5) == filtraMes){
-            Globais.banco2.push({id:Globais.banco2.length,nome:Globais.banco1[i].nome,servico:Globais.banco1[i].servico,data:Globais.banco1[i].data, hora:Globais.banco1[i].hora, cor:Globais.banco1[i].cor});
-          }
-      }
-      
-    }
+    
 
     const onRefresh = React.useCallback(() => {
       setRefreshing(true);
@@ -114,31 +106,13 @@ export default function TelaInicial() {
       
 
       <View style={{ backgroundColor:'#363946',flex: 1, alignItems: 'center'}}>
-        {attMes()}
+        
         
         <View style={{marginBottom: '2%',width: '100%',marginTop: statusBar-10, height:'12%', backgroundColor: '#424654', borderRadius:30, flexDirection: 'row', }}>
             <View style={{paddingHorizontal:'8%',width:'100%',flexDirection:'row', justifyContent: 'space-between', alignItems: 'center'}}>
                 <Text style={{marginRight: '20%',width:170,color:'white', fontSize: 15, marginTop:'10%'}} >Agenda - {dataString}.</Text>
                 
-                            <Picker
-                              style={{color: '#FFF',width:100,height:25,backgroundColor:'#333',marginTop:40}}
-                              selectedValue={filtraMes}
-                              onValueChange={(itemValue) =>
-                                setFiltraMes(itemValue)
-                              }>
-                              <Picker.Item  label="01" value={"01"} />
-                              <Picker.Item  label="02" value={"02"} />
-                              <Picker.Item  label="03" value={"03"} />
-                              <Picker.Item  label="04" value={"04"} />
-                              <Picker.Item  label="05" value={"05"} />
-                              <Picker.Item  label="06" value={"06"} />
-                              <Picker.Item  label="07" value={"07"} />
-                              <Picker.Item  label="08" value={"08"} />
-                              <Picker.Item  label="09" value={"09"} />
-                              <Picker.Item  label="10" value={"10"} />
-                              <Picker.Item  label="11" value={"11"} />
-                              <Picker.Item  label="12" value={"12"} />
-                            </Picker>    
+                        
 
                 <TouchableHighlight style={{marginTop:'10%',borderRadius:10}} underlayColor ="#555" onPress={() => {setModalVisible(!modalVisible)}}>
                   <View style={{width:50,height:50,justifyContent: 'center', alignItems: 'center'}}>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TouchableHighlight,Image,StatusBar,View, Text, Dimensions, FlatList} from 'react-native';
 import Globais from './Globais';
 
-
+const dataCrua = new Date();
+const dataTratada = dataCrua.toLocaleString();
+const dataString = dataTratada.substring(0, 10);
 
 export default function TelaInicial() {
 
@@ -24,17 +26,20 @@ export default function TelaInicial() {
     barba =0;
 
     for(let i = 0; i < Globais.banco2.length ; i++){
-      if(Globais.banco2[i].servico == 'Corte'){
-        valor += 15;corte += 1
-      }
-      if(Globais.banco2[i].servico == "Corte\nBarba"){
-        valor += 25;corte += 1;barba += 1;
-      }
-      if(Globais.banco2[i].servico == "Corte\nSobrancelha"){
-        valor += 20;corte += 1;sobrancelha += 1;
-      }
-      if(Globais.banco2[i].servico == "Corte\nBarba\nSobrancelha"){
-        valor += 30;corte += 1;sobrancelha += 1;barba += 1;
+  //const [filtraMes, setFiltraMes] = useState(dataString.slice(3,5));
+      if(Globais.banco2[i].data.slice(3,5) == dataString.slice(3,5)){
+          if(Globais.banco2[i].servico == 'Corte' ){
+            valor += 15;corte += 1
+          }
+          if(Globais.banco2[i].servico == "Corte\nBarba"){
+            valor += 25;corte += 1;barba += 1;
+          }
+          if(Globais.banco2[i].servico == "Corte\nSobrancelha"){
+            valor += 20;corte += 1;sobrancelha += 1;
+          }
+          if(Globais.banco2[i].servico == "Corte\nBarba\nSobrancelha"){
+            valor += 30;corte += 1;sobrancelha += 1;barba += 1;
+          }
       }
     }
   }
